@@ -89,6 +89,8 @@ export interface Question {
   order_index: number;
   related_resume_section?: string;
   is_follow_up: boolean;
+  question_type?: "open_ended" | "multiple_choice";
+  options?: string[];
 }
 
 export interface AnswerSubmitRequest {
@@ -158,6 +160,8 @@ export interface Report {
   hiring_recommendation?: string;
   hiring_explanation?: string;
   resume_suggestions: string[];
+  integrity_score?: number;
+  proctoring_summary?: ProctorSummary;
   created_at: string;
 }
 
@@ -235,3 +239,29 @@ export interface CandidateMatch {
   interview_summary?: string;
   hiring_recommendation?: string;
 }
+
+// ===== Proctoring Types =====
+export interface ProctorEvent {
+  event_type: string;
+  severity: "low" | "medium" | "high";
+  message: string;
+  score_penalty: number;
+  timestamp?: string;
+}
+
+export interface ProctorTimelineItem {
+  time: string;
+  type: string;
+  severity: string;
+  message: string;
+}
+
+export interface ProctorSummary {
+  session_id: string;
+  integrity_score: number;
+  total_events: number;
+  warning_count: number;
+  event_breakdown: Record<string, number>;
+  timeline: ProctorTimelineItem[];
+}
+
