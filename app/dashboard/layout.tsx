@@ -84,10 +84,8 @@ export default function DashboardLayout({
             <span className="text-lg font-bold gradient-text">MockMate</span>
           </Link>
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-muted-foreground">
-                <Menu className="w-5 h-5" />
-              </Button>
+            <SheetTrigger className="text-muted-foreground p-2 hover:bg-white/5 rounded-md transition-colors">
+              <Menu className="w-5 h-5" />
             </SheetTrigger>
             <SheetContent side="left" className="p-0 w-64 bg-background border-white/10" showCloseButton={false}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
